@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/simao/Desktop/LI3_Projetos/project_java/src</OriginalElement>
+  <nodes>
+    <node x="3971.416666666666" y="1100.5">model.interfacesSGR.ReadingSGR</node>
+    <node x="3103.216693326217" y="503.0">model.BusinessReviewed</node>
+    <node x="3909.211756864841" y="844.0">model.TreeSetBusinesses</node>
+    <node x="2731.211756864841" y="868.5">model.BusinessDistinctUsersComp</node>
+    <node x="492.16555696258047" y="1537.0">view.Menu</node>
+    <node x="3829.945859992884" y="0.0">model.Review</node>
+    <node x="4148.416666666666" y="1100.5">model.interfacesSGR.StatisticsSGR</node>
+    <node x="2448.779193326217" y="882.0">model.interfacesSGR.UsersCatalog</node>
+    <node x="1062.779193326217" y="832.0">model.UserReviewer</node>
+    <node x="2694.5722485115157" y="1537.0">model.GestReviewsMVC</node>
+    <node x="4716.211756864841" y="443.0">model.Business</node>
+    <node x="4054.572248511516" y="1290.5">model.interfacesSGR.SGR</node>
+    <node x="1709.779193326217" y="1087.0">model.UserReviewerComp</node>
+    <node x="4509.211756864841" y="868.5">model.BusinessComp</node>
+    <node x="2440.416666666666" y="419.0">model.Statistics</node>
+    <node x="625.097222222222" y="2307.0">GestReviewsAppMVC</node>
+    <node x="1416.1791933262168" y="467.0">model.User</node>
+    <node x="27.5" y="1609.5">view.ViewQueries</node>
+    <node x="3349.211756864841" y="856.0">model.BusinessesPerState</node>
+    <node x="339.16555696258047" y="1609.5">view.Messages</node>
+    <node x="4279.211756864841" y="882.0">model.interfacesSGR.BusinessesCatalog</node>
+    <node x="1356.779193326217" y="1087.0">model.UserReviewerTotalReviewsComp</node>
+    <node x="2144.279193326217" y="1087.0">model.BusinessReviewedComp</node>
+    <node x="2788.5722485115157" y="2028.0">testing.TestController</node>
+    <node x="3730.279193326217" y="553.0">model.interfacesSGR.ReviewsCatalog</node>
+    <node x="5080.696969696969" y="2028.0">testing.TestLoad</node>
+    <node x="2140.379193326217" y="108.0">model.ReviewScore</node>
+    <node x="1779.779193326217" y="832.0">model.UserReviewerPerMonth</node>
+    <node x="10.5" y="1229.0">view.ANSIIColour</node>
+    <node x="2116.779193326217" y="832.0">model.BusinessReviewsCount</node>
+    <node x="884.1655569625805" y="832.0">model.PairInt</node>
+    <node x="768.1655569625805" y="1609.5">view.Errors</node>
+    <node x="2459.029193326217" y="1100.5">model.interfacesSGR.Queries</node>
+    <node x="3040.211756864841" y="868.5">model.BusinessTotalReviewsComp</node>
+    <node x="618.597222222222" y="1884.0">controller.ControlGestReviews</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.GestReviewsMVC" target="model.User" relationship="CREATE">
+      <point x="-148.36363636363603" y="-102.5" />
+      <point x="2738.2086121478796" y="1496.0" />
+      <point x="1346.279193326217" y="1496.0" />
+      <point x="1346.279193326217" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.Messages" relationship="CREATE">
+      <point x="-61.75" y="-186.5" />
+      <point x="680.347222222222" y="1823.0" />
+      <point x="372.41555696258047" y="1823.0" />
+      <point x="-33.25" y="30.0" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.UserReviewer" relationship="CREATE">
+      <point x="-113.4545454545455" y="-102.5" />
+      <point x="2773.1177030569706" y="1476.0" />
+      <point x="1699.2791933262167" y="1476.0" />
+      <point x="1699.279193326217" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessesPerState" relationship="CREATE">
+      <point x="43.63636363636351" y="-102.5" />
+      <point x="2930.2086121478796" y="1436.0" />
+      <point x="3321.416666666666" y="1436.0" />
+      <point x="3321.416666666666" y="986.0" />
+      <point x="3618.711756864841" y="986.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessTotalReviewsComp" relationship="CREATE">
+      <point x="61.09090909090901" y="-102.5" />
+      <point x="2947.6631576024247" y="1446.0" />
+      <point x="3445.416666666666" y="1446.0" />
+      <point x="3445.416666666666" y="1006.0" />
+      <point x="3184.711756864841" y="1006.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="testing.TestLoad" target="model.Review" relationship="CREATE">
+      <point x="74.39999999999964" y="-42.5" />
+      <point x="5248.096969696969" y="1863.0" />
+      <point x="5221.896969696969" y="1863.0" />
+      <point x="5221.896969696969" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.Business" relationship="DEPENDENCY">
+      <point x="-20.583333333333258" y="-186.5" />
+      <point x="721.5138888888887" y="1763.0" />
+      <point x="757.6655569625805" y="1763.0" />
+      <point x="757.6655569625805" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.BusinessesCatalog" relationship="INTERFACE_GENERALIZATION">
+      <point x="36.25" y="-16.5" />
+      <point x="4134.322248511517" y="1208.0" />
+      <point x="4384.211756864841" y="1208.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.PairInt" relationship="CREATE">
+      <point x="-183.27272727272702" y="-102.5" />
+      <point x="2703.2995212387887" y="1516.0" />
+      <point x="1024.779193326217" y="1516.0" />
+      <point x="1024.779193326217" y="1168.0" />
+      <point x="986.779193326217" y="1168.0" />
+      <point x="986.779193326217" y="1066.0" />
+      <point x="960.6655569625805" y="1066.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.BusinessComp" target="model.Business" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="4596.711756864841" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="model.UserReviewerPerMonth" target="model.User" relationship="GENERALIZATION">
+      <point x="-126.79999999999995" y="-66.5" />
+      <point x="1811.4791933262168" y="811.0" />
+      <point x="1532.6791933262168" y="811.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.TreeSetBusinesses" relationship="CREATE">
+      <point x="96.0" y="-102.5" />
+      <point x="2982.5722485115157" y="1466.0" />
+      <point x="4510.139684972892" y="1466.0" />
+      <point x="4510.139684972892" y="1016.0" />
+      <point x="3798.889684972892" y="1016.0" />
+      <point x="3798.889684972892" y="1006.0" />
+      <point x="4084.211756864841" y="1006.0" />
+      <point x="0.0" y="54.5" />
+    </edge>
+    <edge source="model.TreeSetBusinesses" target="model.Business" relationship="TO_MANY">
+      <point x="87.5" y="-54.5" />
+      <point x="4171.711756864841" y="771.0" />
+      <point x="5017.711756864841" y="771.0" />
+      <point x="100.5" y="126.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.UserReviewerPerMonth" relationship="CREATE">
+      <point x="-78.5454545454545" y="-102.5" />
+      <point x="2808.0267939660616" y="1456.0" />
+      <point x="1938.279193326217" y="1456.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.TreeSetBusinesses" target="model.Business" relationship="DEPENDENCY">
+      <point x="-87.5" y="-54.5" />
+      <point x="3996.711756864841" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.BusinessReviewed" relationship="DEPENDENCY">
+      <point x="-75.4722222222224" y="-186.5" />
+      <point x="666.6249999999995" y="1833.0" />
+      <point x="328.66555696258047" y="1833.0" />
+      <point x="328.66555696258047" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="model.UserReviewer" target="model.Review" relationship="DEPENDENCY">
+      <point x="0.0" y="-66.5" />
+      <point x="1199.279193326217" y="741.0" />
+      <point x="1077.7999999999995" y="741.0" />
+      <point x="1077.7999999999995" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.BusinessReviewed" relationship="DEPENDENCY">
+      <point x="16.857142857142662" y="-16.5" />
+      <point x="2534.8863361833596" y="1006.0" />
+      <point x="2720.711756864841" y="1006.0" />
+      <point x="2720.711756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="model.UserReviewer" target="model.User" relationship="GENERALIZATION">
+      <point x="54.59999999999991" y="-66.5" />
+      <point x="1253.8791933262169" y="811.0" />
+      <point x="1532.6791933262168" y="811.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.UserReviewerPerMonth" relationship="DEPENDENCY">
+      <point x="-41.333333333333485" y="-42.5" />
+      <point x="2840.2389151781827" y="1823.0" />
+      <point x="998.6655569625805" y="1823.0" />
+      <point x="998.6655569625805" y="1188.0" />
+      <point x="1024.779193326217" y="1188.0" />
+      <point x="1024.779193326217" y="1046.0" />
+      <point x="1938.279193326217" y="1046.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.Review" relationship="DEPENDENCY">
+      <point x="-116.63888888888891" y="-186.5" />
+      <point x="625.458333333333" y="1863.0" />
+      <point x="0.0" y="1863.0" />
+      <point x="0.0" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.BusinessDistinctUsersComp" target="model.BusinessReviewed" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="2875.211756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.UserReviewer" relationship="DEPENDENCY">
+      <point x="-62.0" y="-42.5" />
+      <point x="2819.5722485115157" y="1833.0" />
+      <point x="987.6655569625805" y="1833.0" />
+      <point x="987.6655569625805" y="1178.0" />
+      <point x="1013.779193326217" y="1178.0" />
+      <point x="1013.779193326217" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.User" relationship="TO_MANY">
+      <point x="-165.81818181818153" y="-102.5" />
+      <point x="2720.7540666933346" y="1506.0" />
+      <point x="1052.279193326217" y="1506.0" />
+      <point x="1052.279193326217" y="771.0" />
+      <point x="1455.01252665955" y="771.0" />
+      <point x="-77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="model.UserReviewerPerMonth" target="model.User" relationship="CREATE">
+      <point x="-63.40000000000009" y="-66.5" />
+      <point x="1874.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="model.BusinessesPerState" target="model.Review" relationship="DEPENDENCY">
+      <point x="67.375" y="-42.5" />
+      <point x="3686.086756864841" y="761.0" />
+      <point x="3549.529193326217" y="761.0" />
+      <point x="3549.529193326217" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.UserReviewerTotalReviewsComp" target="model.UserReviewer" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="1522.779193326217" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.UserReviewerPerMonth" target="model.Review" relationship="DEPENDENCY">
+      <point x="126.79999999999995" y="-66.5" />
+      <point x="2065.0791933262167" y="771.0" />
+      <point x="2012.7791933262167" y="771.0" />
+      <point x="2012.7791933262167" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.interfacesSGR.ReviewsCatalog" target="model.Review" relationship="DEPENDENCY">
+      <point x="0.0" y="-16.5" />
+      <point x="3824.279193326217" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.BusinessTotalReviewsComp" target="model.BusinessReviewed" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="3184.711756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="model.UserReviewerPerMonth" target="model.ReviewScore" relationship="TO_MANY">
+      <point x="63.40000000000009" y="-66.5" />
+      <point x="2001.7791933262167" y="389.0" />
+      <point x="2257.379193326217" y="389.0" />
+      <point x="2257.379193326217" y="369.0" />
+      <point x="2307.629193326217" y="369.0" />
+      <point x="55.75" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.BusinessReviewsCount" relationship="DEPENDENCY">
+      <point x="61.75" y="-186.5" />
+      <point x="803.847222222222" y="1823.0" />
+      <point x="916.6655569625805" y="1823.0" />
+      <point x="916.6655569625805" y="1036.0" />
+      <point x="2272.779193326217" y="1036.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.GestReviewsMVC" relationship="CREATE">
+      <point x="20.666666666666515" y="-42.5" />
+      <point x="2902.2389151781827" y="1853.0" />
+      <point x="2891.5722485115157" y="1853.0" />
+      <point x="2891.5722485115157" y="1813.0" />
+      <point x="2982.5722485115157" y="1813.0" />
+      <point x="96.0" y="102.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessComp" relationship="CREATE">
+      <point x="113.4545454545455" y="-102.5" />
+      <point x="3000.0267939660616" y="1476.0" />
+      <point x="4596.711756864841" y="1476.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.Statistics" target="model.ReviewScore" relationship="CREATE">
+      <point x="-93.33333333333348" y="-150.5" />
+      <point x="2487.0833333333326" y="399.0" />
+      <point x="1990.7791933262167" y="399.0" />
+      <point x="1990.7791933262167" y="369.0" />
+      <point x="2196.129193326217" y="369.0" />
+      <point x="-55.75" y="66.5" />
+    </edge>
+    <edge source="model.BusinessReviewed" target="model.ReviewScore" relationship="TO_MANY">
+      <point x="0.0" y="-66.5" />
+      <point x="3243.216693326217" y="389.0" />
+      <point x="2257.379193326217" y="389.0" />
+      <point x="2257.379193326217" y="369.0" />
+      <point x="2307.629193326217" y="369.0" />
+      <point x="55.75" y="66.5" />
+    </edge>
+    <edge source="testing.TestLoad" target="model.GestReviewsMVC" relationship="CREATE">
+      <point x="-37.19999999999982" y="-42.5" />
+      <point x="5136.496969696969" y="1853.0" />
+      <point x="2891.5722485115157" y="1853.0" />
+      <point x="2891.5722485115157" y="1813.0" />
+      <point x="2982.5722485115157" y="1813.0" />
+      <point x="96.0" y="102.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.PairInt" relationship="DEPENDENCY">
+      <point x="-82.66666666666697" y="-42.5" />
+      <point x="2798.9055818448487" y="1843.0" />
+      <point x="949.6655569625805" y="1843.0" />
+      <point x="949.6655569625805" y="1066.0" />
+      <point x="960.6655569625805" y="1066.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Review" relationship="TO_MANY">
+      <point x="183.27272727272702" y="-102.5" />
+      <point x="3069.8449757842427" y="1516.0" />
+      <point x="5128.711756864841" y="1516.0" />
+      <point x="5128.711756864841" y="369.0" />
+      <point x="4214.695859992884" y="369.0" />
+      <point x="128.25" y="174.5" />
+    </edge>
+    <edge source="view.ViewQueries" target="view.ANSIIColour" relationship="REALIZATION">
+      <point x="0.0" y="-30.0" />
+      <point x="0.0" y="78.0" />
+    </edge>
+    <edge source="testing.TestLoad" target="model.Business" relationship="CREATE">
+      <point x="37.19999999999982" y="-42.5" />
+      <point x="5210.896969696969" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="model.UserReviewer" target="model.ReviewScore" relationship="TO_ONE">
+      <point x="-54.59999999999991" y="-66.5" />
+      <point x="1144.679193326217" y="751.0" />
+      <point x="1066.7999999999995" y="751.0" />
+      <point x="1066.7999999999995" y="389.0" />
+      <point x="2257.379193326217" y="389.0" />
+      <point x="2257.379193326217" y="369.0" />
+      <point x="2307.629193326217" y="369.0" />
+      <point x="55.75" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.Messages" relationship="TO_ONE">
+      <point x="-48.02777777777783" y="-186.5" />
+      <point x="694.0694444444441" y="1813.0" />
+      <point x="438.91555696258047" y="1813.0" />
+      <point x="33.25" y="30.0" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.interfacesSGR.SGR" relationship="REALIZATION">
+      <point x="78.5454545454545" y="-102.5" />
+      <point x="2965.1177030569706" y="1456.0" />
+      <point x="4098.072248511517" y="1456.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.Queries" relationship="INTERFACE_GENERALIZATION">
+      <point x="-36.25" y="-16.5" />
+      <point x="4061.822248511516" y="1198.0" />
+      <point x="2518.029193326217" y="1198.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.UserReviewer" relationship="DEPENDENCY">
+      <point x="34.30555555555543" y="-186.5" />
+      <point x="776.4027777777774" y="1803.0" />
+      <point x="894.6655569625805" y="1803.0" />
+      <point x="894.6655569625805" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.TreeSetBusinesses" relationship="DEPENDENCY">
+      <point x="62.0" y="-42.5" />
+      <point x="2943.5722485115157" y="1833.0" />
+      <point x="5150.711756864841" y="1833.0" />
+      <point x="5150.711756864841" y="1016.0" />
+      <point x="3798.889684972892" y="1016.0" />
+      <point x="3798.889684972892" y="1006.0" />
+      <point x="4084.211756864841" y="1006.0" />
+      <point x="0.0" y="54.5" />
+    </edge>
+    <edge source="model.BusinessesPerState" target="model.Business" relationship="DEPENDENCY">
+      <point x="202.125" y="-42.5" />
+      <point x="3820.836756864841" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.BusinessReviewed" relationship="DEPENDENCY">
+      <point x="82.66666666666652" y="-42.5" />
+      <point x="2964.2389151781827" y="1843.0" />
+      <point x="5161.711756864841" y="1843.0" />
+      <point x="5161.711756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="testing.TestLoad" target="model.GestReviewsMVC" relationship="TO_ONE">
+      <point x="-74.39999999999964" y="-42.5" />
+      <point x="5099.296969696969" y="1863.0" />
+      <point x="2881.5722485115157" y="1863.0" />
+      <point x="2881.5722485115157" y="1803.0" />
+      <point x="2790.5722485115157" y="1803.0" />
+      <point x="-96.0" y="102.5" />
+    </edge>
+    <edge source="model.interfacesSGR.BusinessesCatalog" target="model.Business" relationship="DEPENDENCY">
+      <point x="0.0" y="-16.5" />
+      <point x="4384.211756864841" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.UserReviewerPerMonth" relationship="DEPENDENCY">
+      <point x="48.02777777777783" y="-186.5" />
+      <point x="790.1249999999998" y="1813.0" />
+      <point x="905.6655569625805" y="1813.0" />
+      <point x="905.6655569625805" y="1046.0" />
+      <point x="1938.279193326217" y="1046.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Statistics" relationship="CREATE">
+      <point x="-26.181818181818016" y="-102.5" />
+      <point x="2860.3904303296977" y="1426.0" />
+      <point x="2698.711756864841" y="1426.0" />
+      <point x="2698.711756864841" y="771.0" />
+      <point x="2510.416666666666" y="771.0" />
+      <point x="-70.0" y="150.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.UserReviewerPerMonth" relationship="DEPENDENCY">
+      <point x="-16.857142857142662" y="-16.5" />
+      <point x="2501.1720504690743" y="1046.0" />
+      <point x="1938.279193326217" y="1046.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.BusinessesPerState" relationship="DEPENDENCY">
+      <point x="75.47222222222217" y="-186.5" />
+      <point x="817.5694444444441" y="1833.0" />
+      <point x="927.6655569625805" y="1833.0" />
+      <point x="927.6655569625805" y="1198.0" />
+      <point x="960.6655569625805" y="1198.0" />
+      <point x="960.6655569625805" y="1026.0" />
+      <point x="3321.416666666666" y="1026.0" />
+      <point x="3321.416666666666" y="986.0" />
+      <point x="3618.711756864841" y="986.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Business" relationship="TO_MANY">
+      <point x="165.81818181818198" y="-102.5" />
+      <point x="3052.3904303296977" y="1506.0" />
+      <point x="5017.711756864841" y="1506.0" />
+      <point x="100.5" y="126.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.StatisticsSGR" relationship="INTERFACE_GENERALIZATION">
+      <point x="21.75" y="-16.5" />
+      <point x="4119.822248511517" y="1198.0" />
+      <point x="4231.416666666666" y="1198.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.BusinessesPerState" relationship="DEPENDENCY">
+      <point x="33.71428571428578" y="-16.5" />
+      <point x="2551.7434790405027" y="1026.0" />
+      <point x="3321.416666666666" y="1026.0" />
+      <point x="3321.416666666666" y="986.0" />
+      <point x="3618.711756864841" y="986.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessReviewedComp" relationship="CREATE">
+      <point x="-61.09090909090901" y="-102.5" />
+      <point x="2825.4813394206067" y="1446.0" />
+      <point x="2272.779193326217" y="1446.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.BusinessReviewed" target="model.ReviewScore" relationship="CREATE">
+      <point x="-93.33333333333348" y="-66.5" />
+      <point x="3149.8833599928835" y="399.0" />
+      <point x="1990.7791933262167" y="399.0" />
+      <point x="1990.7791933262167" y="369.0" />
+      <point x="2196.129193326217" y="369.0" />
+      <point x="-55.75" y="66.5" />
+    </edge>
+    <edge source="model.BusinessReviewedComp" target="model.BusinessReviewsCount" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.UserReviewerTotalReviewsComp" relationship="CREATE">
+      <point x="-130.909090909091" y="-102.5" />
+      <point x="2755.6631576024247" y="1486.0" />
+      <point x="1522.779193326217" y="1486.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.PairInt" relationship="DEPENDENCY">
+      <point x="-50.57142857142844" y="-16.5" />
+      <point x="2467.4577647547885" y="1066.0" />
+      <point x="960.6655569625805" y="1066.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.Errors" relationship="TO_ONE">
+      <point x="6.861111111111086" y="-186.5" />
+      <point x="748.958333333333" y="1783.0" />
+      <point x="846.9155569625805" y="1783.0" />
+      <point x="26.25" y="30.0" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.PairInt" relationship="DEPENDENCY">
+      <point x="20.583333333333258" y="-186.5" />
+      <point x="762.6805555555552" y="1793.0" />
+      <point x="883.6655569625805" y="1793.0" />
+      <point x="883.6655569625805" y="1066.0" />
+      <point x="960.6655569625805" y="1066.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.BusinessesPerState" target="model.BusinessReviewed" relationship="CREATE">
+      <point x="-202.125" y="-42.5" />
+      <point x="3416.586756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.TreeSetBusinesses" relationship="DEPENDENCY">
+      <point x="50.57142857142844" y="-16.5" />
+      <point x="2568.6006218976454" y="1016.0" />
+      <point x="3798.889684972892" y="1016.0" />
+      <point x="3798.889684972892" y="1006.0" />
+      <point x="4084.211756864841" y="1006.0" />
+      <point x="0.0" y="54.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.TreeSetBusinesses" relationship="DEPENDENCY">
+      <point x="89.19444444444457" y="-186.5" />
+      <point x="831.2916666666665" y="1843.0" />
+      <point x="938.6655569625805" y="1843.0" />
+      <point x="938.6655569625805" y="1208.0" />
+      <point x="3798.889684972892" y="1208.0" />
+      <point x="3798.889684972892" y="1006.0" />
+      <point x="4084.211756864841" y="1006.0" />
+      <point x="0.0" y="54.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.ReadingSGR" relationship="INTERFACE_GENERALIZATION">
+      <point x="7.25" y="-16.5" />
+      <point x="4105.322248511517" y="1168.0" />
+      <point x="4049.916666666666" y="1168.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessReviewed" relationship="CREATE">
+      <point x="26.181818181818016" y="-102.5" />
+      <point x="2912.7540666933337" y="1426.0" />
+      <point x="3029.711756864841" y="1426.0" />
+      <point x="3029.711756864841" y="801.0" />
+      <point x="2955.279193326217" y="801.0" />
+      <point x="2955.279193326217" y="771.0" />
+      <point x="3173.216693326217" y="771.0" />
+      <point x="-70.0" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.User" relationship="DEPENDENCY">
+      <point x="-89.19444444444457" y="-186.5" />
+      <point x="652.9027777777774" y="1843.0" />
+      <point x="215.0" y="1843.0" />
+      <point x="215.0" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.ReviewsCatalog" relationship="INTERFACE_GENERALIZATION">
+      <point x="-7.25" y="-16.5" />
+      <point x="4090.822248511516" y="1178.0" />
+      <point x="3898.711756864841" y="1178.0" />
+      <point x="3898.711756864841" y="771.0" />
+      <point x="3824.279193326217" y="771.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="testing.TestLoad" target="model.User" relationship="CREATE">
+      <point x="0.0" y="-42.5" />
+      <point x="5173.696969696969" y="1863.0" />
+      <point x="5199.896969696969" y="1863.0" />
+      <point x="5199.896969696969" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="GestReviewsAppMVC" target="controller.ControlGestReviews" relationship="CREATE">
+      <point x="0.0" y="-30.0" />
+      <point x="0.0" y="186.5" />
+    </edge>
+    <edge source="model.BusinessesPerState" target="model.BusinessReviewed" relationship="TO_MANY">
+      <point x="-67.375" y="-42.5" />
+      <point x="3551.336756864841" y="771.0" />
+      <point x="3313.216693326217" y="771.0" />
+      <point x="70.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.UserReviewerComp" relationship="CREATE">
+      <point x="-96.0" y="-102.5" />
+      <point x="2790.5722485115157" y="1466.0" />
+      <point x="1818.779193326217" y="1466.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Business" relationship="CREATE">
+      <point x="130.909090909091" y="-102.5" />
+      <point x="3017.4813394206067" y="1486.0" />
+      <point x="4694.711756864841" y="1486.0" />
+      <point x="4694.711756864841" y="781.0" />
+      <point x="4309.779193326217" y="781.0" />
+      <point x="4309.779193326217" y="761.0" />
+      <point x="4816.711756864841" y="761.0" />
+      <point x="-100.5" y="126.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.GestReviewsMVC" relationship="TO_ONE">
+      <point x="102.91666666666663" y="-186.5" />
+      <point x="845.0138888888887" y="1863.0" />
+      <point x="2881.5722485115157" y="1863.0" />
+      <point x="2881.5722485115157" y="1803.0" />
+      <point x="2790.5722485115157" y="1803.0" />
+      <point x="-96.0" y="102.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.ViewQueries" relationship="CREATE">
+      <point x="-102.91666666666674" y="-186.5" />
+      <point x="639.1805555555552" y="1853.0" />
+      <point x="107.5" y="1853.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.BusinessReviewed" target="model.Review" relationship="DEPENDENCY">
+      <point x="93.33333333333348" y="-66.5" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.Statistics" target="model.ReviewScore" relationship="TO_MANY">
+      <point x="0.0" y="-150.5" />
+      <point x="2580.416666666666" y="389.0" />
+      <point x="2257.379193326217" y="389.0" />
+      <point x="2257.379193326217" y="369.0" />
+      <point x="2307.629193326217" y="369.0" />
+      <point x="55.75" y="66.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.BusinessReviewsCount" relationship="DEPENDENCY">
+      <point x="-20.666666666666515" y="-42.5" />
+      <point x="2860.9055818448496" y="1813.0" />
+      <point x="1009.6655569625805" y="1813.0" />
+      <point x="1009.6655569625805" y="1198.0" />
+      <point x="1035.779193326217" y="1198.0" />
+      <point x="1035.779193326217" y="1036.0" />
+      <point x="2272.779193326217" y="1036.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.UserReviewer" target="model.User" relationship="CREATE">
+      <point x="109.20000000000005" y="-66.5" />
+      <point x="1308.479193326217" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+    <edge source="model.interfacesSGR.SGR" target="model.interfacesSGR.UsersCatalog" relationship="INTERFACE_GENERALIZATION">
+      <point x="-21.75" y="-16.5" />
+      <point x="4076.322248511516" y="1188.0" />
+      <point x="3466.416666666666" y="1188.0" />
+      <point x="3466.416666666666" y="996.0" />
+      <point x="2531.279193326217" y="996.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.Menu" relationship="CREATE">
+      <point x="-34.30555555555566" y="-186.5" />
+      <point x="707.7916666666663" y="1803.0" />
+      <point x="619.6655569625805" y="1803.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="model.GestReviewsMVC" relationship="CREATE">
+      <point x="116.63888888888891" y="-186.5" />
+      <point x="858.7361111111109" y="1853.0" />
+      <point x="2891.5722485115157" y="1853.0" />
+      <point x="2891.5722485115157" y="1813.0" />
+      <point x="2982.5722485115157" y="1813.0" />
+      <point x="96.0" y="102.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.BusinessesPerState" relationship="DEPENDENCY">
+      <point x="41.333333333333485" y="-42.5" />
+      <point x="2922.9055818448496" y="1823.0" />
+      <point x="5139.711756864841" y="1823.0" />
+      <point x="5139.711756864841" y="1026.0" />
+      <point x="3321.416666666666" y="1026.0" />
+      <point x="3321.416666666666" y="986.0" />
+      <point x="3618.711756864841" y="986.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.BusinessReviewsCount" relationship="DEPENDENCY">
+      <point x="0.0" y="-16.5" />
+      <point x="2518.029193326217" y="1036.0" />
+      <point x="2272.779193326217" y="1036.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.Statistics" target="model.Review" relationship="DEPENDENCY">
+      <point x="93.33333333333348" y="-150.5" />
+      <point x="2673.7499999999995" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.UserReviewerPerMonth" target="model.ReviewScore" relationship="CREATE">
+      <point x="0.0" y="-66.5" />
+      <point x="1938.279193326217" y="771.0" />
+      <point x="1990.7791933262167" y="771.0" />
+      <point x="1990.7791933262167" y="369.0" />
+      <point x="2196.129193326217" y="369.0" />
+      <point x="-55.75" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessDistinctUsersComp" relationship="CREATE">
+      <point x="8.727272727272975" y="-102.5" />
+      <point x="2895.2995212387887" y="1406.0" />
+      <point x="2875.211756864841" y="1406.0" />
+      <point x="0.0" y="30.0" />
+    </edge>
+    <edge source="model.UserReviewerComp" target="model.UserReviewer" relationship="DEPENDENCY">
+      <point x="0.0" y="-30.0" />
+      <point x="1818.779193326217" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Statistics" relationship="TO_ONE">
+      <point x="-8.72727272727252" y="-102.5" />
+      <point x="2877.8449757842436" y="1416.0" />
+      <point x="2709.711756864841" y="1416.0" />
+      <point x="2709.711756864841" y="761.0" />
+      <point x="2650.416666666666" y="761.0" />
+      <point x="70.0" y="150.5" />
+    </edge>
+    <edge source="testing.TestController" target="model.GestReviewsMVC" relationship="TO_ONE">
+      <point x="0.0" y="-42.5" />
+      <point x="2881.5722485115157" y="1803.0" />
+      <point x="2790.5722485115157" y="1803.0" />
+      <point x="-96.0" y="102.5" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.BusinessReviewsCount" relationship="CREATE">
+      <point x="-43.63636363636351" y="-102.5" />
+      <point x="2842.9358848751526" y="1436.0" />
+      <point x="2448.529193326217" y="1436.0" />
+      <point x="2448.529193326217" y="1036.0" />
+      <point x="2272.779193326217" y="1036.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="model.interfacesSGR.Queries" target="model.UserReviewer" relationship="DEPENDENCY">
+      <point x="-33.71428571428578" y="-16.5" />
+      <point x="2484.314907611931" y="1056.0" />
+      <point x="1673.7499999999995" y="1056.0" />
+      <point x="1673.7499999999995" y="1016.0" />
+      <point x="1199.279193326217" y="1016.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="controller.ControlGestReviews" target="view.Errors" relationship="CREATE">
+      <point x="-6.861111111111086" y="-186.5" />
+      <point x="735.2361111111109" y="1773.0" />
+      <point x="794.4155569625805" y="1773.0" />
+      <point x="-26.25" y="30.0" />
+    </edge>
+    <edge source="model.GestReviewsMVC" target="model.Review" relationship="CREATE">
+      <point x="148.3636363636365" y="-102.5" />
+      <point x="3034.9358848751526" y="1496.0" />
+      <point x="4705.711756864841" y="1496.0" />
+      <point x="4705.711756864841" y="379.0" />
+      <point x="3336.5500266595504" y="379.0" />
+      <point x="3336.5500266595504" y="369.0" />
+      <point x="3958.195859992884" y="369.0" />
+      <point x="-128.25" y="174.5" />
+    </edge>
+    <edge source="model.UserReviewer" target="model.ReviewScore" relationship="CREATE">
+      <point x="-109.20000000000005" y="-66.5" />
+      <point x="1090.079193326217" y="761.0" />
+      <point x="1055.7999999999995" y="761.0" />
+      <point x="1055.7999999999995" y="399.0" />
+      <point x="1990.7791933262167" y="399.0" />
+      <point x="1990.7791933262167" y="369.0" />
+      <point x="2196.129193326217" y="369.0" />
+      <point x="-55.75" y="66.5" />
+    </edge>
+    <edge source="model.interfacesSGR.UsersCatalog" target="model.User" relationship="DEPENDENCY">
+      <point x="0.0" y="-16.5" />
+      <point x="2531.279193326217" y="791.0" />
+      <point x="1583.8791933262169" y="791.0" />
+      <point x="1583.8791933262169" y="771.0" />
+      <point x="1610.3458599928836" y="771.0" />
+      <point x="77.66666666666674" y="102.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7" showDependencies="true" x="1099.142857142857" y="775.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

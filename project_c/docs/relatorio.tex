@@ -1,0 +1,493 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage[pdftex]{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+
+
+\begin{document}
+
+\title{Projeto de Laboratórios de Informática III\\Grupo 15}
+\author{João Barbosa (a93270) \and Simão Cunha (a93262) \and Tiago Silva (a93277)} 
+\date{05 de maio de 2021}
+
+\begin{titlepage}
+
+  %título
+  \thispagestyle{empty} 
+  \pagenumbering{gobble}
+  \begin{center}
+  \begin{minipage}{0.75\linewidth}
+      \centering
+  %engenharia logo
+      \includegraphics[width=0.8\textwidth]{eng.jpeg}\par\vspace{3cm}
+      \vspace{1.5cm}
+  %titulos
+      \href{https://www.uminho.pt/PT}{\scshape\LARGE Universidade do Minho}\cite{uminho} \par
+      \vspace{1cm}
+      \href{https://www.di.uminho.pt/}{\scshape\Large Departamento de Informática}\cite{dinformatica} \par
+      \vspace{1.5cm}
+
+  \maketitle
+
+  \end{minipage}
+  \end{center}
+  
+  \end{titlepage}
+  
+
+ 
+
+\pagebreak
+\pagenumbering{arabic}
+
+\tableofcontents
+
+
+\pagebreak
+
+\section{Introdução}
+\label{sec:intro}
+
+O presente relatório descreve o projeto realizado no âmbito da disciplina de
+Laboratórios de Informática III (LI3), ao longo do segundo semestre,
+do segundo ano, do Mestrado Integrado em Engenharia Informática da Universidade do Minho.
+Tem como objetivo criar um sistema capaz de processar dados contidos em ficheiros CSV para 
+responder a um conjunto de questões de forma eficiente, utilizando a linguagem de programação C.
+
+
+\subsection{Descrição do Problema}
+\label{sec:problema}
+
+Os ficheiros em formato CSV que deveriam ser processados continham informação referente ao
+website {\textit{Yelp}} \cite{yelp}, onde utilizadores
+de todo o mundo podem avaliar vários estabelecimentos, escrevendo as suas críticas.
+
+Em concreto, o trabalho prendia-se em extrair a informação necessária dos vários
+ficheiros, de forma a conseguirmos responder a 9 querys obrigatórias e outras funcionalidades relacionadas com
+o conteúdo das mesmas da forma mais eficiente possível, isto é, tendo especial
+atenção ao tempo de execução do programa, bem como ao encapsulamento dos dados.
+
+\subsection{Ficheiros CSV}
+\label{sec:CSV}
+
+Os 3 ficheiros necessários para a boa execução do programa são \textit{business.csv}, \textit{reviews.csv} e \textit{users.csv} (nomes
+meramente ilustrativos), que continham as informações dos negócios, das críticas e dos utilizadores, respetivamente. \par
+No ficheiro \textit{business.csv}, extraímos o identificador(\texttt{business\textunderscore id}), o nome, a cidade, o estado e as categorias em que cada estabelecimento se insere. \par
+No ficheiro \textit{reviews.csv}, recolhemos a informação relativa ao identificador da crítica (\texttt{review\textunderscore id}), do identificador
+do utilizador que fez a classificação(\texttt{user\textunderscore id}), do identificador do negócio que obteve 
+a crítica (\texttt{business\textunderscore id}),
+do valor das estrelas (0 a 5) atribuídas, do número de pessoas que 
+acharam a review útil, do número de pessoas que acharam-na engraçada, do número de pessoas que a acharam 
+\textit{cool}, 
+da data da publicação da review e do comentário feito pelo utilizador. \par
+Por último, retiramos do ficheiros dos utilizadores, o identificador de um utilizador (\texttt{user\textunderscore id}), do seu nome e da sua lista de amigos. \par
+      \vspace{0.25cm}
+\textbf{NB:} Os vários parâmetros dos ficheiros vêm separados por ';'.
+
+
+\subsection{Conceção da Solução}
+\label{sec:solucao}
+
+Até obtermos a solução final, esta sofreu várias alterações. Numa primeira fase,
+extraímos a informação dos ficheiros, dando-lhes um buffer de tamanho fixo, 
+mas observámos que não conseguíamos ler o ficheiro de exemplo dos utilizadores por ser demasiado pesado. 
+Decidimos então mudar para um tamanho do buffer individual para cada tipo de ficheiro. No entanto, apesar de conseguirmos ler os ficheiros exemplos, queriamos uma resolução mais genérica, assim, acabando por utilizar a função \texttt{getline}\cite{getline} com um buffer inicialmente a NULL e deixar esta ao encargo da alocação do buffer. No ínicio guardávamos toda a informação em arrays, mas devido à ineficiência de procura, optamos pela utilização da API GLIB \cite{glib}, mais precisamente \textit{hash tables}, utilizando como chaves os identificadores, melhorando, assim, o nosso tempo de procura da informação. De seguida, procedemos para a implementação das queries, da criação do tipo de dados TABLE e do interpretador de comandos. \par
+
+O relatório está organizado da seguinte forma: a
+Secção~\ref{sec:estruturadedados} descreve as estruturas de dados adotadas,
+a Secção~\ref{sec:implementacao}  apresenta e discute a solução proposta para a resolução do problema. 
+O relatório termina com conclusões na
+Secção~\ref{sec:conclusao}, onde é também apresentada uma análise crítica aos
+resultados obtidos em testes de performance. \par
+      \vspace{0.25cm}
+\textbf{Link do nosso repositório }:  \url{https://github.com/dium-li3/Grupo15} \cite{github}. \par
+
+
+\section{Organização dos Dados}
+\label{sec:estruturadedados}
+
+Para desenvolvermos este trabalho adotamos as seguintes estruturas de dados:
+
+\subsection{Tipo de Dados Concretos}
+\label{sec:dados_concretos}
+
+\begin{verbatim}
+typedef GHashTable* USERS;     
+typedef GHashTable* REVIEWS;	
+typedef GHashTable* BUSINESSES;
+
+typedef struct sgr {
+    USERS users; 
+    BUSINESSES businesses;
+    REVIEWS reviews; 
+}*SGR;
+\end{verbatim}
+
+\vspace{0.2cm}
+
+Os dados necessários para responder às queries foram armazenados
+na estrutura \texttt{SGR}, a estrutura de dados principal do nosso trabalho.
+De modo a respondermos às queries da forma mais eficiente possível, utilizamos estruturas de dados já existentes e, para isso, recorremos ao GLIB,
+uma biblioteca que fornece os blocos de construção do núcleo da aplicação para bibliotecas 
+e aplicações escritas em C \cite{glib}. \par
+
+Em primeiro lugar, para as estruturas \textbf{users}, \textbf{reviews} e \textbf{businesses}
+utilizamos uma GHashTable \cite{glibHTable} para armazenar cada tipo de dados, isto é, guarda numa \textit{tabela de hash} as respetivas structs, onde as keys de cada tabela são os identificadores de cada tipo de dados (i.e. user\textunderscore id, review\textunderscore id ou business\textunderscore id). \par
+
+A razão para esta escolha deve-se ao facto de os algoritmos de procura, de inserção e de remoção de
+elementos ser constante ($\mathcal{O}(1)$) em tempo médio e, por isso, assintoticamente melhor do que os
+algoritmos em arrays (dinâmicos ou estáticos) ou em listas ligadas (por exemplo).
+Utilizamos como os valores de \textit{hash} os id's das \textit{reviews}, dos \textit{businesses} ou dos
+\textit{users}, por estes serem únicos dentro dos seus respetivos ficheiros.
+Assim, com estes \textit{hash values}, conseguimos trabalhar nos problemas de forma mais rápida 
+e simples pois conseguimos aceder aos elementos da estrutura de dados muito eficientemente com o
+recurso a funções já existentes no glib (por exemplo, g\textunderscore hash\textunderscore table\textunderscore lookup \cite{ghtLookup}, 
+g\textunderscore hash\textunderscore table\textunderscore foreach \cite{ghtForeach}, ...).\par
+
+
+\subsection{Estruturas de Dados Complementares}
+\label{sec:dados_complementares}
+
+\begin{verbatim}
+typedef struct user {
+    char* user_id;  
+    char* name;     
+    char* friends;  
+}*USER;
+\end{verbatim}
+
+A estrutura de dados \texttt{users} contém o ID do utilizador, o seu nome e a sua lista de amigos. 
+
+
+\begin{verbatim}
+typedef struct business {
+    char* business_id;  
+    char* name;         
+    char* city;         
+    char* state;        
+    char* categories;   
+}*BUSINESS;
+\end{verbatim}
+
+A estrutura de dados \texttt{business} contém o ID do negócio, o seu nome, a cidade onde se localiza, o estado onde se situa
+e as categorias em que se insere.
+
+\begin{verbatim}
+typedef struct review {
+    char* review_id;    
+    char* user_id;      
+    char* business_id;  
+    float stars;        
+    int useful;         
+    int funny;          
+    int cool;           
+    char* date;         
+    char* text;         
+}*REVIEW;
+\end{verbatim}
+
+A estrutura de dados \texttt{review} contém o ID da review (\textit{review\textunderscore id}), o id do utilizador que fez a criica (\textit{user\textunderscore id})
+, o id do negócio que recebeu a review (\textit{business\textunderscore id}), o
+valor das estrelas (0 a 5) atribuídas, o número de pessoas que 
+acharam a review "útil", o número de pessoas que acharam-na "engraçada", o número de pessoas que a acharam "cool", a data da publicação da review e o comentário feito pelo utilizador (\textit{text}).
+
+
+\begin{verbatim}
+typedef char* string;
+
+typedef struct table {
+    string *info;         
+    string *titles;       
+    string title_lines;   
+    int lines;            
+    int columns;          
+    int size;             
+    int number_of_pages;  
+    int lines_for_page;   
+    int *biggest_length;  
+    int buffer_size;      
+}*TABLE;
+\end{verbatim}
+
+A estrutura de dados \texttt{table} serve representar a informação calculada pelas queries de uma forma apelativa para o utilizador.
+Neste tipo de dados, podemos inserir \textit{strings} nos títulos e nas diversas linhas da TABLE, definir o número de colunas e de linhas, o número de páginas para tornar mais apelativa a leitura da informação, 
+o número de linhas a aparecer por página (que neste caso vão ser 10) 
+e o tamanho do buffer para carregar uma TABLE.
+Além disso, podemos saber o comprimento de uma linha para desenhar a TABLE de forma a 
+que cada informação fique centrada na respetiva linha.
+
+\begin{verbatim}
+typedef struct hashdata {
+    void* table; 
+    void* datas[5]; 
+}*HASHDATA;
+\end{verbatim}
+
+Tendo em conta a função que o GLIB nos oferece (g\textunderscore hash\textunderscore table\textunderscore foreach \cite{ghtForeach}), onde dada uma hash, uma função e um valor que essa função possa receber, aplica a todos os elementos da \textit{hash} essa função. Aqui surgiu a necessidade de passar mais que um valor e com isso surgiu a \texttt{struct hashdata} que não só guarda espaço para 5 valores, como ainda guarda espaço para a TABLE. Apesar de esta ser um \texttt{void*} (tal como as \textit{datas}) e poder ser guardada dentro desse array, decidimos destacar dentro da struct como um "\textit{data}" especial para facilitar o seu manuseamento.
+
+
+\section{Implementação}
+\label{sec:implementacao}
+
+\subsection{Modularização Funcional}
+\label{sec:organizacao}
+
+O trabalho é composto por vários módulos listados abaixo, que foram surgindo consoante as necessidades que fomos detetando.
+
+\begin{itemize}
+    \item model:
+        \begin{itemize}
+        \item \texttt{business.c}: contém todas as funções para aceder à struct business;
+        \item \texttt{user.c}: contém todas as funções para aceder à struct user;
+        \item \texttt{review.c}: contém todas as funções para aceder à struct review;
+        \item \texttt{reading.c}: contém todas as funções para carregar e processar dados oriundos dos ficheiros CSV;
+        \item \texttt{hashes.c}: contém todas as funções para aceder às diferentes \textit{tabelas de hash}; 
+    \end{itemize}
+    \item controller:
+        \begin{itemize}
+        \item \texttt{hashcontrol.c}: contém todas as funções auxiliares de acesso a \textit{tabelas de hash} que intervêm nas querys pedidas;
+        \item \texttt{interpreter.c}: contém todas as funções necessárias para o interpretador de comandos, assim como as outras funcionalidades para o menu;
+        \item \texttt{sgr.c}: contém todas as funções responsáveis pelo acesso às diferentes \textit{tabelas de hash} e pelas querys pedidas pela equipa docente;
+    \end{itemize}
+    \item view:
+        \begin{itemize}
+        \item \texttt{table.c}: contém todas as funções necessárias para representar a informação oriunda das queries;
+        \item \texttt{show.c}: contém todas as funções necessárias para a componente gráfica do programa;
+    \end{itemize}
+\end{itemize}
+
+Os vários módulos criados podem ser vistos como unidades interdependentes que se
+complementam, cada uma com objetivos específicos, que interagem e que estão ligadas
+entre si apenas por funções (única interface), garantindo o encapsulamento dos dados.
+
+Cada módulo tem uma única funcionalidade, um objetivo específico,
+como, por exemplo, responder a uma query ou realizar a leitura de dados.
+De facto, com a divisão física dos ficheiros tentamos garantir a abstração dos dados, 
+bem como facilitar a reutilização do código.
+
+
+\subsection{Abstração de Dados}
+\label{sec:abstracao}
+
+Conforme reparou na secção anterior, uma das estratégias adotadas para garantir
+a abstração dos dados foi através da modularização funcional do código.
+Aliado a isso, o encapsulamento de todos os dados foi garantido com "\textit{getters}" e "\textit{setters}".
+De facto, os ficheiros \textit{header} criados impossibilitam
+que os atributos das diversas estruturas de dados criadas sejam acedidos diretamente.
+Por exemplo, a estrutura de dados que contém todos as informações relevantes e
+referentes ao usuário foi definida no ficheiro \texttt{review.c} da seguinte forma:
+
+\begin{verbatim}
+typedef struct review {
+    char* review_id;    
+    char* user_id;      
+    char* business_id;  
+    float stars;        
+    int useful;         
+    int funny;          
+    int cool;           
+    char* date;         
+    char* text;         
+}*REVIEW;
+\end{verbatim}
+
+sendo que , por exemplo, o acesso ao campo \texttt{review\textunderscore id} da \texttt{struct review} só é possível através das 
+funções \texttt{char* get\textunderscore review\textunderscore id(REVIEW r)} que retorna uma cópia desse campo,
+ou \texttt{void set\textunderscore review\textunderscore id(REVIEW r, char* id)} que atribui um valor a esse campo,
+já que o ficheiro header review.h possui apenas a declaração \texttt{typedef struct review *REVIEW}.
+
+
+\subsection{Queries}
+\label{sec:queries}
+
+
+\subsubsection*{Query 1}
+\label{sec:query1}
+
+\textbf{“Dado o caminho para os 3 ficheiros (Users, Businesses, e Reviews), ler o seu
+conteúdo e carregar as estruturas de dados correspondentes.”}
+
+Nesta query começamos por inicializar a variável \texttt{SGR} através da \texttt{init\textunderscore sgr()}, que cria uma \textit{hash table} para cada um dos três tipos pretendidos (\texttt{USERS}, \texttt{BUSINESSES} e \texttt{REVIEWS}), e, em seguida, dividimos o processo de leitura em 3 funções que carregam os respetivos tipos de dados separadamente. Note que, ao para carregar a \textit{tabela de hash} REVIEWS, este necessita de validar a pré-existência dos ID's da \textit{review}, do \textit{business} e do \textit{user} noutras\textit{tabelas de hash}, sendo, por isso, o último a ser lido. As funções de leitura são muito semelhantes nos três casos, exceto nos detalhes por exclusividade/diferença das estruturas. Estas utilizam da função  \texttt{getline()}\cite{getline}, que lê linha a linha do ficheiro, cria a respetiva estrutura (durante a criação efetua-se a validação dos dados) e, por fim, coloca na respetiva hash.
+
+\subsubsection*{Query 2}
+\label{sec:query2}
+
+\textbf{“Determinar a lista de nomes de negócios e o número total de negócios cujo nome
+inicia por uma dada letra. A procura não deverá ser case sensitive.”}
+
+A estratégia para esta query passa por inicializar a estrutura TABLE, através da \texttt{init\textunderscore table()}, colocar os titulos necessários ("business\textunderscore id, name"), e, em seguida, percorrer a \textit{hash table} BUSINESSES e colocar dentro da TABLE os id's e os nomes dos negócios que começam pela letra pedida.
+
+\subsubsection*{Query 3}
+\label{sec:query3}
+
+\textbf{“Dado um id de negócio, determinar a sua informação: nome, cidade, estado, stars,
+e número total reviews.”}
+
+Nesta query (e nas seguintes), o processo da criação da TABLE é semelhante à da query anterior. Passamos por encontrar o BUSINESS através do seu ID e da \textit{hash table} BUSINESSES (com recurso da função g\textunderscore hash\textunderscore table\textunderscore lookup do GLIB \cite{ghtLookup}), e, em seguida, percorremos a \textit{hash table} REVIEWS para calcular as estrelas médias atribuídas a esse negócio. De seguida, adicionamos toda a informação calculada numa TABLE.
+
+\subsubsection*{Query 4}
+\label{sec:query4}
+
+\textbf{“Dado um id de utilizador, determinar a lista de negócios aos quais fez review. A
+informação associada a cada negócio deve ser o id e o nome."}
+
+Para esta query, percorremos a \textit{hash table} REVIEWS, e, para cada REVIEW, verificamos se o ID do utilizador pedido existe. Em caso afirmativo, através do ID de negócio, vamos procurar na \textit{hash table} BUSINESSES o negócio que obteve uma \textit{review}, e colocando numa TABLE o ID do negócio e o seu nome.
+
+
+\subsubsection*{Query 5}
+\label{sec:query5}
+
+\textbf{“Dado um número n de stars e uma cidade, determinar a lista de negócios com n
+ou mais stars na dada cidade. A informação associada a cada negócio deve ser o seu id e
+nome.”}
+
+A estratégia desta query passa por criar uma hash table que fosse ser quase uma "\textit{cópia}" de BUSINESSES, só que com um filtro relativo à cidade pedida. Para isso, depois de criar a \textit{hash}, percorremos a \textit{hash table} BUSINESSES e colocamos dentro da \textit{hash} criada apenas os negócios da cidade pedida. De seguida, percorremos a \textit{hash table} REVIEWS de modo a calcular o número médio de estrelas atribuídas aos negócios, e por fim, percorremos a \textit{hash table} criada inicialmente, e colocamos dentro de uma TABLE os negócios que tiverem um número de estrelas médias maior ou igual ao número de estrelas pedido.
+
+
+\subsubsection*{Query 6}
+\label{sec:query6}
+
+\textbf{“Dado um número inteiro n, determinar a lista dos top n negócios (tendo em conta
+o número médio de stars) em cada cidade. A informação associada a cada negócio deve
+ser o seu id, nome, e número de estrelas."}
+
+Nesta query, utilizamos o raciocínio da query anterior só que em vez de 1 cidade, temos n cidades. Assim, a ideia que tivémos foi criar n \textit{hash tables}, e, como modo de organização, colocamos essas \textit{tabelas de hash} dentro de uma \textit{hash} global que tivesse como chave o nome da cidade. Depois, assim como na query 5, percorremos o BUSINESSES e, em seguida, o REVIEWS, com o mesmo propósito. Por fim, percorremos a \textit{hash} criada, que por sua vez percorre cada uma das suas \textit{hashes} de valor, e coloca por ordem (1º por cidade, 2º por valor médio de estrelas) dentro da TABLE o top pedido.
+
+\subsubsection*{Query 7}
+\label{sec:query7}
+
+\textbf{“Determinar a lista de ids de utilizadores e o número total de utilizadores que
+tenham visitado mais de um estado, i.e. que tenham feito reviews em negócios de diferentes
+estados."}
+
+A solução começou por se criar uma \textit{hash table} que guarda um inteiro (número de cidades visitadas) e uma \texttt{string} (cidade visitada) numa estrutura de dados HASHDATA. Já a chave será o ID do utilizador. Em seguida, percorremos a \textit{hash table} REVIEWS e em cada REVIEW (com o acesso à HASHDATA através de um \texttt{g\textunderscore hash\textunderscore lookup} com o ID do utilizador na \textit{hash table} criada), verificamos a sua existência. Se esse HASHDATA não existir, significa que é a primeira vez que encontramos este \texttt{user} e então adicionamos à hash table com o valor da cidade visitadas a 1 e colocamos a cidade na string (obtemos a cidade através do identificador do negócio e a hash table BUSINESSES). Se existir, então vemos se este utilizador já passou por 2 cidades; se sim não fazemos nada, pois este já é internacional; se não então comparamos a cidade visitada da hashdata e a cidade da crítica, e caso sejam diferentes aumentamos 1 ao número de cidades visitadas. Por fim é só percorrer a hash table criada e adicionar à TABLE os idenficadores dos utilizadores que tiverem 2 nas cidades visitadas. NB: Nota que como não pede o número de cidades visitadas, não nos vimos na necessidade de ver se o utilizador passou por mais que 2 cidades. Caso pedisse teriamos que usar um array de strings (cidades visitadas) e ir incrementando o número de cidades de visitadas, sempre que fosse uma cidade nova.
+
+\subsubsection*{Query 8}
+\label{sec:query8}
+
+\textbf{"Dado um número inteiro n e uma categoria, determinar a lista dos top n negócios
+(tendo em conta o número médio de stars) que pertencem a uma determinada categoria. A
+informação associada a cada negócio deve ser o seu id, nome, e número de estrelas."}
+
+Aqui aplicamos um pouco do raciocínio da query 5, onde criamos uma hash table em que a chave eram os identificadores de negócio e o valor uma HASHDATA com o nome, número total de estrelas e número total de reviews. Em seguida percorremos a hash BUSINESSES e colocamos os negócios dentro da hash criada que tiverem a mesma categoria pedida. Percorremos a hash REVIEWS para calcular o número total de estrelas/total reviews dos negócios. Por fim percorremos a hash criada para ordenar pelo maior número médio de estrelas, os negócios num top definido e colocamos dentro da TABLE.
+\subsubsection*{Query 9}
+\label{sec:query9}
+
+\textbf{"Dada uma palavra, determinar a lista de ids de reviews que a referem no campo
+text."}
+
+A resolução desta query passou por percorrer o REVIEWS e colocar dentro da TABLE os IDS das críticas que contêm no seu texto a palavra pedida.
+
+\subsection{Testes de performance}
+
+\begin{table}[h!]
+ \begin{tabular}{|c||c|} 
+ \hline
+ \textbf{Query 1} & \textbf{Query 2} \\ [0.5ex] 
+ \hline
+ Carregar os ficheiros $\rightarrow$7.85 s  &  businesses\textunderscore started\textunderscore by\textunderscore letter(sgr,'w') $\rightarrow$ 27.080 ms \\ 
+  
+ & businesses\textunderscore started\textunderscore by\textunderscore letter(sgr,'t') $\rightarrow$ 24.138 ms \\
+ & businesses\textunderscore started\textunderscore by\textunderscore letter(sgr,'a') $\rightarrow$ 23.390 ms \\ [0.5ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+ \begin{tabular}{|c||c|} 
+ \hline
+ \textbf{Query 3} & \textbf{Query 7} \\ [0.5ex] 
+ \hline
+ business\textunderscore info(sgr,"N3\textunderscore Gs3DnX4k9SgpwJxdEfw")
+ $\rightarrow$ 136.385 ms & international\textunderscore users(sgr) $\rightarrow$ 719.160 ms \\
+ business\textunderscore info(sgr,"-l5w8\textunderscore vwKDSUlpr9FSQoqA")
+ $\rightarrow$ 130.396 ms &   \\
+ business\textunderscore info(sgr,"6fT0lYr\textunderscore UgWSCZs\textunderscore w1PBTQ")
+ $\rightarrow$ 131.130 ms & \\ [0.5ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+ \begin{tabular}{|c|} 
+ \hline
+ \textbf{Query 4} \\ [0.5ex] 
+ \hline
+ businesses\textunderscore reviewed(sgr, "q\textunderscore QQ5kBBwlCcbL1s4NVK3g") $\rightarrow$ 144.893 ms \\   
+ businesses\textunderscore reviewed(sgr, "RNm\textunderscore RWkcd02Li2mKPRe7Eg") $\rightarrow$ 138.027 ms \\
+ businesses\textunderscore reviewed(sgr, "bUHweiErUJ36WGeNrPmEbA") $\rightarrow$ 137.753 ms \\ [0.5ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+ \begin{tabular}{|c||c|} 
+ \hline
+ \textbf{Query 5} & \textbf{Query 9} \\ [0.5ex] 
+ \hline
+ businesses\textunderscore with\textunderscore stars\textunderscore and\textunderscore city(sgr,4,"Portland")$\rightarrow$212.109 ms & reviews\textunderscore with\textunderscore word(sgr,"and")$\rightarrow$739.166 ms \\   
+ businesses\textunderscore with\textunderscore stars\textunderscore and\textunderscore city(sgr,1,"Portland")$\rightarrow$210.217 ms & reviews\textunderscore with\textunderscore word(sgr,"well")$\rightarrow$1572.931 ms \\
+ businesses\textunderscore with\textunderscore stars\textunderscore and\textunderscore city(sgr,4,"Atlanta")$\rightarrow$214.209 ms &  reviews\textunderscore with\textunderscore word(sgr,"cook")$\rightarrow$1790.292 ms\\ [0.5ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+ \begin{tabular}{|c||c|} 
+ \hline
+ \textbf{Query 6} & \textbf{Query 8} \\ [0.5ex] 
+ \hline
+ top\textunderscore businesses\textunderscore by\textunderscore city(sgr,10)$\rightarrow$607.508 ms &  top\textunderscore businesses\textunderscore with\textunderscore category(sgr,4,"Restaurants")$\rightarrow$290.798 ms \\ [0.5ex]   
+ top\textunderscore businesses\textunderscore by\textunderscore city(sgr,50)$\rightarrow$648.791 ms &  top\textunderscore businesses\textunderscore with\textunderscore category(sgr,1,"Restaurants")$\rightarrow$297.053 ms \\  
+ top\textunderscore businesses\textunderscore by\textunderscore city(sgr,100)$\rightarrow$672.220 ms & top\textunderscore businesses\textunderscore with\textunderscore category(sgr,4,"Pet")$\rightarrow$199.174 ms \\  [0.5ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+\textbf{Especificações da máquina onde os testes foram executados:}
+\begin{itemize}
+    \item Nome: \textit{MSI GL63 8SE}
+    \item Sistema operativo: \textit{Ubuntu}
+    \item Processador: \textit{Intel Coffeelake i7-8750H + HM370} 
+    \item RAM: \textit{16GB DDR4 2666MHz}
+    \item Placa gráfica: \textit{NVidea GeForce RTX 2060, com 6GB GDDR6}
+\end{itemize}
+
+\subsection{Estratégias para melhorar o desempenho}
+\label{sec:desempenho}
+
+Como dito anteriormente, um dos nossos problemas de desempenho era na leitura e no armazenamento dos ficheiros. Começamos por usar um buffer enorme fixo para a leitura de uma linha, mudando posteriormente para a \textit{getline} que aloca espaço no buffer à medida que necessita. Já no que toca ao armazenamento, numa fase inicial guardávamos a informação em arrays, mas decidimos utilizar as \textit{hash tables} fornecidas pela API GLIB para que o processo de procura fosse mais rápido. 
+Falando das queries, houve uma que sofreu drásticas mudanças devido ao seu desempenho lento, a query 6 (~\ref{sec:query6} ). A príncipio a sua resolução tinha as seguintes etapas: percorrer a hash BUSINESSES e em cada BUSINESS calcular o seu average star através da hash REVIEWS, e por fim realizar o top. Isto obviamente era extremamente ineficiente, pois percorriamos a hash REVIEWS quantos negócios tivessemos, logo decidimos por obtar por outra estratégia, mais elaborada. Primeiro criamos uma hash (em que as chaves são as cidades) que tivesse como valor outras mini hashes (em que as chaves são os identificadores) com valor de HASHDATA (uma struct auxiliar que neste caso teria o business\textunderscore id, o business\textunderscore name, um apontador para o número total de estrelas, e o número de reviews). Depois percorriamos a hash BUSINESSES e em cada BUSINESS criavamos uma HASHDATA, e através da sua cidade e do seu identificador inseriamos na respetiva hash table. Em seguida percorriamos a hash REVIEWS para calcular os average stars de todos os businesses guardados na criada hash table. Por fim percorremos a hash das cidades e colocamos por ordem o top dos businesses, como pretendido na query. Apesar de mais elaborada e se calhar confusa estratégia, a eficiência melhorou pois já não precisamos percorrer tantas vezes desnecessariamente a hash REVIEWS, ainda que tenhamos de abdicar de um pouco mais de memória ao criar hash tables de auxílio.
+
+\section{Conclusões}
+\label{sec:conclusao}
+
+
+Face ao problema apresentado e analisando criticamente a solução proposta concluímos
+que cumprimos todas as tarefas, conseguindo atingir os objetivos definidos. No decurso
+do projeto recorremos aos conhecimentos adquiridos nas unidades curriculares de
+Algoritmos e Complexidade, Programação Imperativa, Laboratórios Informática II, bem como a decorrente Laboratórios Informática III, onde aprendemos conceitos novos como a Modularidade e Encapsulamento. \par
+Todavia, entendemos que há alguns aspetos da nossa solução que, eventualmente,
+poderiam ser melhorados, mas que com a falta de tempo e/ou conhecimento não foi possível. Infelizmente, não tivemos tempo para testar,
+em termos de desempenho, mais soluções possíveis que pudessem fazer diferença
+a nível de tempo em todas as queries, por se calhar termos gasto esse tempo em coisas mais triviais, como à construção das nossas estruturas de dados,
+bem como à forma como iríamos ler e processar os dados dos ficheiros CSV, pois
+verificamos que estas duas ações iriam ter um peso determinante em termos de
+eficiência no trabalho. \par
+Em suma, não obstante as potenciais melhorias que poderiam ser feitas no
+programa, os testes por nós realizados, nas nossas máquinas, atingiram
+um tempo de execução que consideramos bastante aceitável.
+
+\pagebreak
+
+\bibliographystyle{abbrv}
+\bibliography{sample}
+
+
+\end{document}
