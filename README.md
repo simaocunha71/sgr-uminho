@@ -1,4 +1,4 @@
-## Projeto de Laboratórios de Informática 3 (LI3) - Sistema de gestão e consulta de recomendações de negócios na plataforma Yelp - Ano letivo de 2020/2021
+## Projetos de Laboratórios de Informática 3 (LI3) - Sistema de gestão e consulta de recomendações de negócios na plataforma Yelp - Ano letivo de 2020/2021
 
 # Menu principal do projeto de C
 <p align="center">
