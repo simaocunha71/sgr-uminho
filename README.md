@@ -11,7 +11,7 @@
 - Mostrar catálogos dos diferentes tipos de ficheiros
 - Efetuar queries
 - Copiar informação de uma TABLE num ficheiro .csv
-- Efetuar testes unitários de performance das queries com recurso ao um programa separado do módulo principal
+- Efetuar testes unitários de performance das queries com recurso a um programa separado do módulo principal
 ```
 
 # Menu principal do projeto de Java
