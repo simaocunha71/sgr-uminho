@@ -19,7 +19,7 @@
   <img width="500" height="300" src="https://user-images.githubusercontent.com/61991247/124792727-2ddb0d00-df45-11eb-8681-706842de924c.png">
 </p>
 
-# Funcionalidades dos programas
+# Funcionalidades do programa
 ```
 - Carregar ficheiros .csv e ficheiros-objeto (assim como gravar estes tipos de ficheiros)
 - Mostrar catálogos dos diferentes tipos de ficheiros
